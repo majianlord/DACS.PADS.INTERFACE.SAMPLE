@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://www.private.dacs.dla.mil" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="https://www.private.dacs.dla.mil" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://www.private.dacs.dla.mil">
+      <s:element name="Online">
+        <s:complexType />
+      </s:element>
+      <s:element name="OnlineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="OnlineResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsEncrypted" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadFileResult" type="tns:FileUploadStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FileUploadStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UploadStatus" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="UploadError" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UploadPath" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddPadsJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="recordToAdd" type="tns:PadsRecord" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PadsRecord">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Job" type="tns:PadsJob" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobLib" type="tns:LibraryDetail" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobSvc" type="tns:LibraryService" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobCategory" type="tns:ArrayOfCategory" />
+          <s:element minOccurs="1" maxOccurs="1" name="FolderID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="DocVersion" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsError" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastError" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="JobRole" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PadsJob">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="JobId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="RoleId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="StatusId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="JobDtTm" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CSObjId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CsFolderId" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="CSPath" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CsDocVer" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="SrcDocPath" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LibDetId" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestDocName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SrcSystem" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SrcReference" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CatInheritFlag" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LibraryDetail">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LibDetId" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShortNm" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LongNm" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SvcUsr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SvcPass" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OnErrEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OnErrCC" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LibraryService">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LibDetId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="SeqNo" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="SvcUrl" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Enabled" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCategory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Category" nillable="true" type="tns:Category" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Category">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CategoryID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attributes" type="tns:ArrayOfAttribute" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAttribute">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Attribute" nillable="true" type="tns:Attribute" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Attribute">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AttributeName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AttributeType" type="tns:AttributeType" />
+          <s:element minOccurs="0" maxOccurs="1" name="StringValue" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateValue" type="tns:ArrayOfDateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="IntegerValue" type="tns:ArrayOfLong" />
+          <s:element minOccurs="1" maxOccurs="1" name="BooleanValue" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="SetValue" type="tns:ArrayOfArrayOfAttribute" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="AttributeType">
+        <s:restriction base="s:string">
+          <s:enumeration value="DATEValue" />
+          <s:enumeration value="STRINGValue" />
+          <s:enumeration value="INTEGERValue" />
+          <s:enumeration value="BOOLEANValue" />
+          <s:enumeration value="SETValue" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDateTime">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="dateTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLong">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="long" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfArrayOfAttribute">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfAttribute" nillable="true" type="tns:ArrayOfAttribute" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddPadsJobResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddPadsJobResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="OnlineSoapIn">
+    <wsdl:part name="parameters" element="tns:Online" />
+  </wsdl:message>
+  <wsdl:message name="OnlineSoapOut">
+    <wsdl:part name="parameters" element="tns:OnlineResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadFile" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddPadsJobSoapIn">
+    <wsdl:part name="parameters" element="tns:AddPadsJob" />
+  </wsdl:message>
+  <wsdl:message name="AddPadsJobSoapOut">
+    <wsdl:part name="parameters" element="tns:AddPadsJobResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PADSUploadSoap">
+    <wsdl:operation name="Online">
+      <wsdl:input message="tns:OnlineSoapIn" />
+      <wsdl:output message="tns:OnlineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input message="tns:UploadFileSoapIn" />
+      <wsdl:output message="tns:UploadFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPadsJob">
+      <wsdl:input message="tns:AddPadsJobSoapIn" />
+      <wsdl:output message="tns:AddPadsJobSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PADSUploadSoap" type="tns:PADSUploadSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Online">
+      <soap:operation soapAction="https://www.private.dacs.dla.mil/Online" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap:operation soapAction="https://www.private.dacs.dla.mil/UploadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPadsJob">
+      <soap:operation soapAction="https://www.private.dacs.dla.mil/AddPadsJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PADSUploadSoap12" type="tns:PADSUploadSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Online">
+      <soap12:operation soapAction="https://www.private.dacs.dla.mil/Online" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap12:operation soapAction="https://www.private.dacs.dla.mil/UploadFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPadsJob">
+      <soap12:operation soapAction="https://www.private.dacs.dla.mil/AddPadsJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PADSUpload">
+    <wsdl:port name="PADSUploadSoap" binding="tns:PADSUploadSoap">
+      <soap:address location="https://www.public.dacs.dla.mil/portal/webservices/padsupload.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PADSUploadSoap12" binding="tns:PADSUploadSoap12">
+      <soap12:address location="https://www.public.dacs.dla.mil/portal/webservices/padsupload.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

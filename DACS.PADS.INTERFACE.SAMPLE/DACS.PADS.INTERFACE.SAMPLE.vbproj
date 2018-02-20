@@ -47,10 +47,31 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DACS-Encryption, Version=2.0.0.0, Culture=neutral, PublicKeyToken=abe709ee34442e07, processorArchitecture=MSIL">
+      <HintPath>..\packages\DACS.General.Encryption.2.0.3\lib\net452\DACS-Encryption.dll</HintPath>
+    </Reference>
+    <Reference Include="DACS_Category, Version=1.0.0.0, Culture=neutral, PublicKeyToken=30c099a68384e4c0, processorArchitecture=MSIL">
+      <HintPath>..\packages\DACS_Category.1.0.0-CI00061\lib\net452\DACS_Category.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.5.0-rc05\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="PadsInterface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=23cac304e552db93, processorArchitecture=MSIL">
+      <HintPath>..\packages\PadsInterface.1.0.0-CI00055\lib\net461\PadsInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="PadsRecord, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9a2590781ee6e91f, processorArchitecture=MSIL">
+      <HintPath>..\packages\PadsRecord.1.0.0-CI00055\lib\net461\PadsRecord.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -117,6 +138,14 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="NLog.config" />
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data-encryption-256.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
